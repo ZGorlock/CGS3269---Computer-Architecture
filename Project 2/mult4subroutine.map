@@ -1,0 +1,21 @@
+ -----------------
+ Symbol | Location
+ -------+---------
+ MLoop  |   031
+ Mult   |   02E
+ Output |   02A
+ Set0   |   03A
+ a      |   03E
+ b      |   03F
+ c      |   040
+ d      |   041
+ e      |   043
+ f      |   044
+ isZero |   042
+ one    |   049
+ w      |   048
+ x      |   046
+ y      |   047
+ z      |   045
+ zero   |   04A
+

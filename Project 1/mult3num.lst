@@ -1,0 +1,109 @@
+     Assembly listing for: mult3num.mas
+                Assembled: Mon Jan 30 22:46:31 EST 2017
+
+         |                          /Zachary Gill
+         |                          /CGS3269 - Fall 2017
+         |                          /Program 1
+         |                          
+000 5000 |  begin  INPUT             
+001 6000 |         OUTPUT            
+002 2034 |         STORE z           
+         |                          
+003 8800 |         SKIPCOND 800      
+004 902E |         JUMP set0a       /if z <= 0
+         |                          
+005 1037 |  j1     LOAD n            
+006 4039 |         SUBT one          
+007 2037 |         STORE n           
+         |                          
+008 1037 |  loopA  LOAD n            
+009 8800 |         SKIPCOND 800      
+00A 9024 |         JUMP out         /if n == 0
+00B 4039 |         SUBT one          
+00C 2037 |         STORE n           
+         |                          
+00D 5000 |         INPUT             
+00E 6000 |         OUTPUT            
+00F 2036 |         STORE b           
+         |                          
+010 8800 |         SKIPCOND 800      
+011 9031 |         JUMP set0b       /if b <= 0
+         |                          
+012 1036 |  j2     LOAD b            
+013 4039 |         SUBT one          
+014 8800 |         SKIPCOND 800      
+015 9008 |         JUMP loopA       /if b == 1
+016 2036 |         STORE b           
+         |                          
+017 1034 |         LOAD z            
+018 2035 |         STORE a           
+         |                          
+019 1034 |  loopB  LOAD z            
+01A 3035 |         ADD a             
+01B 2034 |         STORE z           
+         |                          
+01C 1036 |         LOAD b            
+01D 4039 |         SUBT one          
+01E 2036 |         STORE b           
+01F 8400 |         SKIPCOND 400      
+020 9019 |         JUMP loopB       /if b == 0
+         |                          
+021 1037 |         LOAD n            
+022 8400 |         SKIPCOND 400     /if n == 0
+023 9008 |         JUMP loopA        
+         |                          
+024 1038 |  out    LOAD isZero       
+025 8400 |         SKIPCOND 400      
+026 902A |         JUMP ret0        /if isZero
+027 1034 |  print  LOAD z            
+028 6000 |         OUTPUT            
+029 7000 |         HALT              
+         |                          
+         |                          
+02A 1039 |  ret0   LOAD one          
+02B 4039 |         SUBT one          
+02C 2034 |         STORE z           
+02D 9027 |         JUMP print        
+         |                          
+02E 1039 |  set0a  LOAD one          
+02F 2038 |         STORE isZero      
+030 9005 |         JUMP j1           
+         |                          
+031 1039 |  set0b  LOAD one          
+032 2038 |         STORE isZero      
+033 9012 |         JUMP j2           
+         |                          
+         |                          
+034 0000 |  z      DEC 0             
+035 0000 |  a      DEC 0             
+036 0000 |  b      DEC 0             
+037 0003 |  n      DEC 3             
+038 0000 |  isZero DEC 0             
+039 0001 |  one    DEC 1             
+
+Assembly successful.
+
+         SYMBOL TABLE
+         --------------------------------------------------
+          Symbol | Defined | References 
+         --------+---------+-------------------------------
+          a      |   035   | 018, 01A
+          b      |   036   | 00F, 012, 016, 01C, 01E
+          begin  |   000   | 
+          isZero |   038   | 024, 02F, 032
+          j1     |   005   | 030
+          j2     |   012   | 033
+          loopA  |   008   | 015, 023
+          loopB  |   019   | 020
+          n      |   037   | 005, 007, 008, 00C, 021
+          one    |   039   | 006, 00B, 013, 01D, 02A, 02B, 
+                 |         | 02E, 031
+          out    |   024   | 00A
+          print  |   027   | 02D
+          ret0   |   02A   | 026
+          set0a  |   02E   | 004
+          set0b  |   031   | 011
+          z      |   034   | 002, 017, 019, 01B, 027, 02C
+         --------------------------------------------------
+
+

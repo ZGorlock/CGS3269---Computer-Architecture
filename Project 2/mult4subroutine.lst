@@ -1,0 +1,129 @@
+     Assembly listing for: mult4subroutine.mas
+                Assembled: Sat Mar 04 21:43:05 EST 2017
+
+         |                          /Zachary Gill
+         |                          /CGS3269 - Spring 2017
+         |                          /Program 2
+         |                          
+000 5000 |         INPUT             
+001 6000 |         OUTPUT            
+002 203E |         STORE a           
+003 8800 |         SKIPCOND 800      
+004 003A |         JNS Set0          
+         |                          		
+005 5000 |         INPUT             
+006 6000 |         OUTPUT            
+007 203F |         STORE b           
+008 8800 |         SKIPCOND 800      
+009 003A |         JNS Set0          
+         |                          		
+00A 5000 |         INPUT             
+00B 6000 |         OUTPUT            
+00C 2040 |         STORE c           
+00D 8800 |         SKIPCOND 800      
+00E 003A |         JNS Set0          
+         |                          		
+00F 5000 |         INPUT             
+010 6000 |         OUTPUT            
+011 2041 |         STORE d           
+012 8800 |         SKIPCOND 800      
+013 003A |         JNS Set0          
+         |                          		
+014 1042 |         LOAD isZero       
+015 8800 |         SKIPCOND 800      
+016 902A |         JUMP Output       
+         |                          		
+         |                          		
+017 103E |         LOAD a            
+018 2046 |         STORE x           
+019 103F |         LOAD b            
+01A 2047 |         STORE y           
+01B 002E |         JNS Mult          
+01C 1048 |         LOAD w            
+01D 2043 |         STORE e           
+         |                          		
+01E 1040 |         LOAD c            
+01F 2046 |         STORE x           
+020 1041 |         LOAD d            
+021 2047 |         STORE y           
+022 002E |         JNS Mult          
+023 1048 |         LOAD w            
+024 2044 |         STORE f           
+         |                          		
+025 1043 |         LOAD e            
+026 2046 |         STORE x           
+027 1044 |         LOAD f            
+028 2047 |         STORE y           
+029 002E |         JNS Mult          
+         |                          		
+         |                          		
+02A 1048 |  Output LOAD w            
+02B 2045 |         STORE z           
+02C 6000 |         OUTPUT            
+02D 7000 |         HALT              
+         |                          	
+         |                          	
+02E 0000 |  Mult   HEX 0             
+02F 104A |         LOAD zero         
+030 2048 |         STORE w           
+031 1048 |  MLoop  LOAD w            
+032 3046 |         ADD x             
+033 2048 |         STORE w           
+034 1047 |         LOAD y            
+035 4049 |         SUBT one          
+036 2047 |         STORE y           
+037 8400 |         SKIPCOND 400      
+038 9031 |         JUMP MLoop       /if y == 0
+039 C02E |         JUMPI Mult        
+         |                          		
+03A 0000 |  Set0   HEX 0             
+03B 104A |         LOAD zero         
+03C 2042 |         STORE isZero      
+03D C03A |         JUMPI Set0        
+         |                          		
+         |                          	
+         |                          	
+03E 0000 |  a      DEC 0             
+03F 0000 |  b      DEC 0             
+040 0000 |  c      DEC 0             
+041 0000 |  d      DEC 0             
+         |                          
+042 0001 |  isZero DEC 1             
+         |                          
+043 0000 |  e      DEC 0            /a*b
+044 0000 |  f      DEC 0            /c*d
+045 0000 |  z      DEC 0            /e*f
+         |                          
+046 0000 |  x      DEC 0            /mult 1
+047 0000 |  y      DEC 0            /mult 2
+048 0000 |  w      DEC 0            /result
+         |                          
+049 0001 |  one    DEC 1             
+04A 0000 |  zero   DEC 0             
+
+Assembly successful.
+
+         SYMBOL TABLE
+         --------------------------------------------------
+          Symbol | Defined | References 
+         --------+---------+-------------------------------
+          MLoop  |   031   | 038
+          Mult   |   02E   | 01B, 022, 029, 039
+          Output |   02A   | 016
+          Set0   |   03A   | 004, 009, 00E, 013, 03D
+          a      |   03E   | 002, 017
+          b      |   03F   | 007, 019
+          c      |   040   | 00C, 01E
+          d      |   041   | 011, 020
+          e      |   043   | 01D, 025
+          f      |   044   | 024, 027
+          isZero |   042   | 014, 03C
+          one    |   049   | 035
+          w      |   048   | 01C, 023, 02A, 030, 031, 033
+          x      |   046   | 018, 01F, 026, 032
+          y      |   047   | 01A, 021, 028, 034, 036
+          z      |   045   | 02B
+          zero   |   04A   | 02F, 03B
+         --------------------------------------------------
+
+

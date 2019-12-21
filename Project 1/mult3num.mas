@@ -1,0 +1,79 @@
+/Zachary Gill
+/CGS3269 - Fall 2017
+/Program 1
+
+begin,	Input
+	Output
+	Store	z
+
+	Skipcond	800
+	Jump	set0a		/if z <= 0
+
+j1,	Load	n
+	Subt	one
+	Store	n
+
+loopA,	Load	n
+	Skipcond	800
+	Jump	out		/if n == 0
+	Subt	one
+	Store	n
+
+	Input
+	Output
+	Store	b
+
+	Skipcond	800
+	Jump	set0b		/if b <= 0
+
+j2,	Load	b
+	Subt	one
+	Skipcond	800
+	Jump	loopA		/if b == 1
+	Store	b
+
+	Load	z
+	Store	a
+
+loopB,	Load	z
+	Add	a
+	Store	z
+
+	Load	b
+	Subt	one
+	Store	b
+	Skipcond	400
+	Jump	loopB		/if b == 0
+
+	Load	n
+	Skipcond	400	/if n == 0
+	Jump	loopA
+
+out,	Load	isZero
+	Skipcond	400
+	Jump	ret0		/if isZero
+print,	Load	z
+	Output
+	Halt
+
+
+ret0,	Load	one
+	Subt	one
+	Store	z
+	Jump	print
+
+set0a,	Load	one
+	Store	isZero
+	Jump j1
+
+set0b,	Load	one
+	Store	isZero
+	Jump j2
+
+
+z,	Dec	0
+a,	Dec	0
+b,	Dec	0
+n,	Dec	3
+isZero,	Dec	0
+one,	Dec	1

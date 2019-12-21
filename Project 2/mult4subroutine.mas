@@ -1,0 +1,99 @@
+/Zachary Gill
+/CGS3269 - Spring 2017
+/Program 2
+
+		INPUT
+		OUTPUT
+		STORE		a
+		SKIPCOND	800
+		JNS			Set0
+		
+		INPUT
+		OUTPUT
+		STORE		b
+		SKIPCOND	800
+		JNS			Set0
+		
+		INPUT
+		OUTPUT
+		STORE		c
+		SKIPCOND	800
+		JNS			Set0
+		
+		INPUT
+		OUTPUT
+		STORE		d
+		SKIPCOND	800
+		JNS			Set0
+		
+		LOAD		isZero
+		SKIPCOND	800
+		JUMP		Output
+		
+		
+		LOAD		a
+		STORE		x
+		LOAD		b
+		STORE		y
+		JNS			Mult
+		LOAD		w
+		STORE		e
+		
+		LOAD		c
+		STORE		x
+		LOAD		d
+		STORE		y
+		JNS			Mult
+		LOAD		w
+		STORE		f
+		
+		LOAD		e
+		STORE		x
+		LOAD		f
+		STORE		y
+		JNS			Mult
+		
+		
+Output,	LOAD		w
+		STORE		z
+		OUTPUT
+		HALT
+	
+	
+Mult,	HEX			0
+		LOAD		zero
+		STORE		w
+MLoop,	LOAD		w
+		ADD			x
+		STORE		w
+		LOAD		y
+		SUBT		one
+		STORE		y
+		SKIPCOND	400
+		JUMP		MLoop	/if y == 0
+		JUMPI		Mult
+		
+Set0,	HEX			0
+		LOAD 		zero
+		STORE		isZero
+		JUMPI		Set0
+		
+	
+	
+a,		DEC			0
+b,		DEC			0
+c,		DEC			0
+d,		DEC			0
+
+isZero,	DEC			1
+
+e,		DEC			0		/a*b
+f,		DEC			0		/c*d
+z,		DEC			0		/e*f
+
+x,		DEC			0		/mult 1
+y,		DEC			0		/mult 2
+w,		DEC			0		/result
+
+one,	DEC			1
+zero,	DEC			0

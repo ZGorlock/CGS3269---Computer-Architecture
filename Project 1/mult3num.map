@@ -1,0 +1,20 @@
+ -----------------
+ Symbol | Location
+ -------+---------
+ a      |   035
+ b      |   036
+ begin  |   000
+ isZero |   038
+ j1     |   005
+ j2     |   012
+ loopA  |   008
+ loopB  |   019
+ n      |   037
+ one    |   039
+ out    |   024
+ print  |   027
+ ret0   |   02A
+ set0a  |   02E
+ set0b  |   031
+ z      |   034
+
